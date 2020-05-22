@@ -1,0 +1,53 @@
+{
+  "name": "desktop-organizer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
+    "capacitor-copy": "vue-cli-service capacitor-copy",
+    "capacitor-init": "vue-cli-service capacitor-init",
+    "capacitor-open": "vue-cli-service capacitor-open",
+    "capacitor-update": "vue-cli-service capacitor-update"
+  },
+  "dependencies": {
+    "@capacitor/cli": "^1.0.0-alpha.38",
+    "@capacitor/core": "^1.0.0-alpha.38",
+    "@fullcalendar/core": "^4.4.0",
+    "@fullcalendar/daygrid": "^4.4.0",
+    "@fullcalendar/vue": "^4.4.0",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.13.0",
+    "core-js": "^3.6.4",
+    "firebase": "^7.14.2",
+    "moment": "^2.25.0",
+    "register-service-worker": "^1.7.1",
+    "sw-precache": "^5.2.1",
+    "vue": "^2.6.11",
+    "vue-functional-calendar": "^2.8.79",
+    "vue-google-login": "^2.0.3",
+    "vue-router": "^3.1.6",
+    "vue-textarea-autosize": "^1.1.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.3.0",
+    "@vue/cli-plugin-pwa": "^4.3.1",
+    "@vue/cli-plugin-unit-jest": "^4.3.0",
+    "@vue/cli-service": "^4.3.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/test-utils": "1.0.0-beta.31",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "sass": "^1.19.0",
+    "sass-loader": "^8.0.2",
+    "vue-cli-plugin-pwa": "^1.0.0-alpha.1",
+    "vue-template-compiler": "^2.6.11",
+    "workbox-webpack-plugin": "^5.1.3"
+  }
+}

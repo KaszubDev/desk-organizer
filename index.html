@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><!--[if IE]><link rel="icon" href="/Desk-Organizer/favicon.ico"><![endif]--><title>desktop-organizer</title><link rel=manifest href=/Desk-Organizer/manifest.json><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css><link href=/Desk-Organizer/css/app.ffced855.css rel=preload as=style><link href=/Desk-Organizer/css/chunk-vendors.a4db98f9.css rel=preload as=style><link href=/Desk-Organizer/js/app.07b078c5.js rel=preload as=script><link href=/Desk-Organizer/js/chunk-vendors.45e86173.js rel=preload as=script><link href=/Desk-Organizer/css/chunk-vendors.a4db98f9.css rel=stylesheet><link href=/Desk-Organizer/css/app.ffced855.css rel=stylesheet><link rel=icon type=image/png sizes=32x32 href=/Desk-Organizer/img/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/Desk-Organizer/img/icons/favicon-16x16.png><link rel=manifest href=/Desk-Organizer/manifest.json><meta name=theme-color content=#4DBA87><meta name=apple-mobile-web-app-capable content=no><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content=desktop-organizer><link rel=apple-touch-icon href=/Desk-Organizer/img/icons/apple-touch-icon-152x152.png><link rel=mask-icon href=/Desk-Organizer/img/icons/safari-pinned-tab.svg color=#4DBA87><meta name=msapplication-TileImage content=/Desk-Organizer/img/icons/msapplication-icon-144x144.png><meta name=msapplication-TileColor content=#000000></head><body style="background-color: #000;"><script src=https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js></script><script src=https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js></script><script src=https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js></script><script src=https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js></script><script src=https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js></script><script>// TODO: Replace the following with your app's Firebase project configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDvMEsaN4ivlogM2tUmMjGHpCER7tezSfI",
+      authDomain: "desk-organizer.firebaseapp.com",
+      databaseURL: "https://desk-organizer.firebaseio.com",
+      projectId: "desk-organizer",
+      storageBucket: "desk-organizer.appspot.com",
+      messagingSenderId: "439953774653",
+      appId: "1:439953774653:web:ac2ea26c1367f39b68f254",
+      measurementId: "G-KWETXEY06J"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+
+    async function addNewEvent(userId, fromDate, toDate, eventTitle){
+      let tempEventId = 1;
+
+      await firebase.database().ref('users/' + userId + '/').once("value", function (data) {
+        tempEventId = data.child('eventId').node_.value_;
+      });
+
+      console.log(tempEventId);
+
+      await firebase.database().ref('users/' + userId + '/').update({
+        eventId: tempEventId + 1
+      });
+
+      console.log(tempEventId);
+
+      firebase.database().ref('users/' + userId + '/events/' + tempEventId + '/').set({
+          from: fromDate,
+          to: toDate,
+          title: eventTitle
+      });
+
+      // firebase.database().ref('users/' + userId + '/events/' + tempEventId + '/2').set({
+      //   from: fromDate,
+      //   to: toDate,
+      //   title: eventTitle
+      // })
+    }
+
+    async function checkAccount(email, pass) {
+      let i = 1;
+      let usersEmail;
+      let userPass;
+      let logged = 0;
+
+      while (true) {
+        await firebase.database().ref('users/' + i + '/').once("value", function (data) {
+          usersEmail = data.child('email').node_.value_;
+          userPass = data.child('pass').node_.value_;
+          if (usersEmail === email && userPass === pass) {
+            logged = '1' + i.toString();
+            usersEmail = undefined;
+          }
+        });
+        i++;
+        if(usersEmail === undefined && i > 10){
+          break;
+        }
+      }
+      return logged;
+    }
+
+    async function saveToDb(email, pass) {
+      let uid = 1;
+
+      await firebase.database().ref("ids/").once("value", function(data) {
+        uid = data.child('id').node_.value_
+      });
+
+      // console.log(uid);
+
+      firebase.database().ref('ids/').set({
+        id: uid + 1
+      });
+
+      firebase.database().ref('users/' + uid).set({
+        email: email,
+        pass: pass,
+        id: uid,
+        eventId: 1,
+        events: {}
+      }, function (error) {
+        if (error) {
+          console.log("err")
+        } else {
+          console.log("success")
+        }
+      });
+    }</script><noscript><strong>We're sorry but desktop-organizer doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=/Desk-Organizer/js/chunk-vendors.45e86173.js></script><script src=/Desk-Organizer/js/app.07b078c5.js></script></body></html>
