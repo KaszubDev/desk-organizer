@@ -25,8 +25,8 @@
     </div>
   </div>
 
-  <canvas v-show="hourlyForecast" id="bar-chart-h" width="800" height="200" class='chart'></canvas>
-  <canvas v-show="!hourlyForecast" id="bar-chart-d" width="800" height="200" class='chart'></canvas>
+  <canvas v-show="hourlyForecast" v-on:click="hourlyForecast = !hourlyForecast" id="bar-chart-h" width="800" height="200" class='chart'></canvas>
+  <canvas v-show="!hourlyForecast" v-on:click="hourlyForecast = !hourlyForecast" id="bar-chart-d" width="800" height="200" class='chart'></canvas>
 
   <div class="mt-2" v-show="hourlyForecast" v-on:click="hourlyForecast = !hourlyForecast">
     <div class="htempdiv d-flex justify-content-between" :key="`item-${index}`" v-for="(temp, index) in hourlyTemp">
@@ -120,7 +120,7 @@ export default {
             labels: labels,
             datasets: [
               {
-                label: "Population (millions)",
+                label: "Temperature in Celsius degrees",
                 backgroundColor: "#3e95cd",
                 data: temps
               }
