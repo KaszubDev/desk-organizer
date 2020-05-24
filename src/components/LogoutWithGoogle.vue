@@ -52,11 +52,16 @@ export default {
 #googleLogout {
   background: transparent;
   color: white;
-  margin: 5px;
+  margin: 2px;
   border: none;
+  transition: .2s ease-in;
+  font-size: .8rem;
   &:hover {
-    background-color: white;
     color: black;
+  }
+  @media (min-width: 900px) {
+    margin: 5px;
+    font-size: 1rem;
   }
 }
 </style>

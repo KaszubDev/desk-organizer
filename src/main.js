@@ -16,6 +16,7 @@ import LogoutWithGoogle from './components/LogoutWithGoogle.vue';
 import DateTimeComponent from './components/DateTimeComponent.vue';
 import CurrencyComponent from './components/CurrencyComponent.vue';
 import { FunctionalCalendar } from 'vue-functional-calendar';
+import { LoaderPlugin } from 'vue-google-login';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import './registerServiceWorker';
@@ -36,6 +37,11 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueTextareaAutosize);
 Vue.config.productionTip = false;
+Vue.use(LoaderPlugin, {
+  client_id: '439953774653-7v3u79r0n9hd9imv844rlu621tnl8jq7.apps.googleusercontent.com',
+  scope: 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events.readonly https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.events.readonly',
+
+});
 
 firebase.initializeApp({
   apiKey: 'AIzaSyDvMEsaN4ivlogM2tUmMjGHpCER7tezSfI',
