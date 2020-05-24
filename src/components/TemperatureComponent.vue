@@ -93,7 +93,7 @@ export default {
             this.hourlyTempChart.push(val.temperature);
             hourly.push(val.temperature);
             hourlyLabels.push(timestamp);
-          
+
           }
           for (const val of data.daily.data) {
             const date = new Date(val.time * 1000);
@@ -149,15 +149,22 @@ export default {
 }
 .htempdiv{
   margin-top: 2px;
+  font-size: .7rem;
+  @media (min-width: 900px) {
+    font-size: 1rem;
+  }
 }
 .iconweather{
   width: 2rem;
   filter: invert(1);
 }
 .wind, .humidity, .pressure,.temp{
-  font-size: 1.5rem;
+  font-size: .85rem;
   position: relative;
   left: 0.7rem;
+  @media (min-width: 900px) {
+    font-size: 1.5rem;
+  }
 }
 .temp{
   float: right;

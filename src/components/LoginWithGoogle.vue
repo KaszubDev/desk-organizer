@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
   name: 'LoginWithGoogle',
@@ -21,26 +22,28 @@ export default {
                 renderParams: {
                     longtitle: true,
                     width: '100%',
-                }
+                },
+                items: null,
             }
       },
   methods: {
-        onSuccess(googleUser) {
-            console.log(googleUser);
-
-            // This only gets the user information: id, name, imageUrl and email
-            console.log(googleUser.getBasicProfile());
+          onSuccess() {
+            /*
+              axios.get('https://www.googleapis.com/calendar/v3/calendars/primary/events')
+                .then((response => this.items = response))
+                .catch((err) => console.log(err));
+            */
 
             this.$router.push('/main');
-        }
-  }
+          }
+      }
 };
 </script>
 <style lang="scss">
 .abcRioButton {
   width: 100% !important;
   height: 100% !important;
-  padding: 8px;
+  padding: 6px;
   border-radius: 50px !important;
   background-color: transparent !important;
   color: #fff !important;

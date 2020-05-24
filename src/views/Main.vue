@@ -18,7 +18,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .root {
   color: #fff;
   height: 100vh;
@@ -29,6 +29,12 @@ export default {
   right: 0;
   position: absolute;
   width: auto !important;
+  border: 1px solid #fff;
+  margin: 2px;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
 }
 .calendar-container {
   display: flex;
@@ -37,16 +43,23 @@ export default {
   align-items: top;
   position: relative;
   padding: 10px;
+  margin-top: 30px;
   @media (min-width: 900px) {
     margin-top: 50px;
   }
-}
-.calendar-container__calendar {
-  max-height: 50%;
-  min-width: 50%;
-  @media (min-width: 900px) {
-    width: 100%;
-    margin-top: 10%;
+  &__calendar {
+    max-height: 40%;
+    min-width: 40%;
+    @media (min-width: 900px) {
+      width: 100%;
+      margin-top: 10%;
+    }
+  }
+  .vfc-calendar {
+    max-height: 250px;
+    @media (min-width: 900px) {
+      max-height: auto;
+    }
   }
 }
 </style>
