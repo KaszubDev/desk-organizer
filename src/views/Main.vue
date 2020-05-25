@@ -8,6 +8,11 @@
     <div class="calendar-container">
       <functional-calendar class="calendar-container__calendar" :is-dark='true'></functional-calendar>
     </div>
+    <div class="align-bottom">
+      <MyCalendar />
+    </div>
+
+
   </div>
 
 </template>
@@ -15,7 +20,7 @@
 <script>
 export default {
   name: 'Main',
-};
+}
 </script>
 
 <style lang="scss" scoped>

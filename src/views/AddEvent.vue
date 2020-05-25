@@ -45,6 +45,7 @@ export default {
         document.getElementById('hint').innerText = 'Event added';
         // eslint-disable-next-line no-undef
         addNewEvent(localId, this.from, this.to, this.title);
+
       } else {
         document.getElementById('hint').innerText = 'You can not add empty event';
       }

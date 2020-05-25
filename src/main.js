@@ -51,6 +51,7 @@ firebase.initializeApp({
 
 export const db = firebase.firestore();
 
+
 new Vue({
   router,
   mode: 'hash',
